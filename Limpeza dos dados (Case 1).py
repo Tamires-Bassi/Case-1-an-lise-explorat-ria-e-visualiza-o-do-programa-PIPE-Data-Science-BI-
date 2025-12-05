@@ -74,11 +74,23 @@ if 'Vigência' in df.columns:
     df['Data Início'] = pd.to_datetime(df['Data Início'], errors='coerce')
     df['Data Fim'] = pd.to_datetime(df['Data Fim'], errors='coerce')
 
+    # Formatação visual DD-MM-AAAA
+    df['Data Início'] = df['Data Início'].dt.strftime('%d-%m-%Y')
+    df['Data Fim'] = df['Data Fim'].dt.strftime('%d-%m-%Y')
+
+    # Remover a coluna vigência original
+    df.drop(columns=['Vigência'], inplace=True)
+
 # --------------- Extrair Cidade e UF ---------------
-def extrair_local(texto_sede):
+def processar_instituicao(texto_sede):
     if pd.isna(texto_sede) or texto_sede == "Não encontrado":
         return None, None
     
+    # Inicializa a variável com o texto original antes de processar
+    nome_limpo = texto_sede
+    cidade = None
+    uf = None
+
     # Regex para encontrar a Cidade e UF no final ou meio da string
     match = re.search(r'([A-Za-zÀ-ÿ\s]+)\s*,\s*([A-Z]{2})', texto_sede)
 
@@ -88,15 +100,23 @@ def extrair_local(texto_sede):
         cidade = match.group(1).strip()
         # Extrai a UF do segundo grupo capturado e remove espaços
         uf = match.group(2).strip()
-        return cidade, uf
     
-    # Se não encontrou o padrão, retorna None para ambos
-    return None, None
+        # Limpar o nome da instituição
+        nome_limpo = texto_sede[:match.start()].strip()
+        # Remove ponto final se tiver sobrado
+        if nome_limpo.endswith('.'):
+            nome_limpo = nome_limpo[:-1].strip()
+    
+    return nome_limpo, cidade, uf
 
 if 'Instituição Sede' in df.columns:
-    df[['Cidade', 'UF']] = df['Instituição Sede'].apply(
-        lambda x: pd.Series(extrair_local(x))
-    )
+    # Aplica a função e atualiza as colunas
+    resultado_inst = df['Instituição Sede'].apply(lambda x: pd.Series(processar_instituicao(x)))
+    
+    # Atualiza a coluna original com o nome limpo e cria as novas
+    df['Instituição Sede'] = resultado_inst[0]
+    df['Cidade'] = resultado_inst[1]
+    df['UF'] = resultado_inst[2]
 
 # --------------- Tratar Áreas do Conhecimento ---------------
 def extrair_area_principal(area_texto):
