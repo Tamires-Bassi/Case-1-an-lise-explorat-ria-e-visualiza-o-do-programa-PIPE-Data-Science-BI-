@@ -31,7 +31,7 @@ for column in colunas_texto:
 def extrair_datas(vigencia):
         # Se a vigência for nula ou não encontrada, retorna None para ambas as datas
     if pd.isna(vigencia) or vigencia == "Não encontrado":
-        return None, None
+        return "Não encontrado", "Não encontrado"
     
     # Dicionário para converter meses
     meses = {
@@ -84,7 +84,7 @@ if 'Vigência' in df.columns:
 # --------------- Extrair Cidade e UF ---------------
 def processar_instituicao(texto_sede):
     if pd.isna(texto_sede) or texto_sede == "Não encontrado":
-        return None, None
+        return "Não encontrado", "Não encontrado"
     
     # Inicializa a variável com o texto original antes de processar
     nome_limpo = texto_sede
@@ -127,6 +127,9 @@ def extrair_area_principal(area_texto):
 
 if 'Área do Conhecimento' in df.columns:
     df['Área Principal'] = df['Área do Conhecimento'].apply(extrair_area_principal)
+
+
+df.drop(columns=['Área do Conhecimento'], inplace=True)
 
 # --------------- Salvar o arquivo limpo ---------------
 df.to_excel('dados_limpos_case1.xlsx', index=False)
