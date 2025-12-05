@@ -22,17 +22,17 @@ while True:
     print(f"Lendo página {pag}...")
 
     # URL dinâmica com o número da página
-    url = "https://bv.fapesp.br/pt/pesquisa/buscador/?q2=(PIPE)%20AND%20(*:*)&page={pag}"
+    url = f"https://bv.fapesp.br/pt/pesquisa/buscador/?q2=(PIPE)%20AND%20(*:*)&page={pag}"
     
     try:
-        response = get(url) # Faz a requisição GET para a URL e converte a resposta em texto
+        response = get(url, headers=headers) # Faz a requisição GET para a URL e converte a resposta em texto
 
         # Se der erro na requisição, para o loop
         if response.status_code != 200:
             print(f"Erro ao acessar página {pag}. Status: {response.status_code}")
             break
 
-        soup = BeautifulSoup(response, 'html.parser') # Formata a string resposta para HTML
+        soup = BeautifulSoup(response.text, 'html.parser') # Formata a string resposta para HTML
 
         Table_details = soup.find_all('div', class_='table_details') # Encontra todos os elementos com a classe 'rotulo'
 
