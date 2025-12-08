@@ -1,0 +1,94 @@
+# Análise Exploratória do Programa PIPE e Modelagem de Dados
+
+Este repositório contém a solução para o Desafio Técnico do Processo Seletivo de Estágio em Análise de Dados do **Supera Parque**. O projeto consiste na extração, tratamento e visualização de dados públicos da FAPESP, além da modelagem de um banco de dados relacional.
+
+## 📋 Sobre o Projeto
+
+O objetivo foi analisar os auxílios concedidos pelo programa **"Pesquisa Inovativa em Pequenas Empresas (PIPE)"** da FAPESP e projetar um sistema para gestão de pesquisa.
+
+O desafio foi dividido em duas etapas:
+1.  **Case 1 (Engenharia de Dados & BI):** Web Scraping da biblioteca virtual da FAPESP, limpeza de dados (ETL) e criação de dashboards analíticos.
+2.  **Case 2 (Banco de Dados):** Modelagem de dados (MER/DER) e desenvolvimento de consultas SQL para extração de insights.
+
+## 🛠️ Tecnologias Utilizadas
+
+* **Python 3.14.0**: Linguagem principal para automação.
+* **Bibliotecas Python**:
+    * `requests`: Requisições HTTP.
+    * `BeautifulSoup (bs4)`: Web Scraping e parsing de HTML.
+    * `pandas`: Manipulação, limpeza e análise de dados.
+    * `openpyxl`: Exportação para Excel.
+    * `re`: Expressões Regulares (Regex) para tratamento de texto avançado.
+* **Power BI**: Visualização de dados e dashboards interativos.
+* **SQL**: Consultas estruturadas para banco de dados.
+* **brModelo**: Criação de Diagramas Entidade-Relacionamento (DER).
+
+## 📂 Estrutura do Repositório
+
+```text
+├── Extração de dados (Case1).py       # Script de Web Scraping e paginação
+├── Limpeza dos dados (Case 1).py      # Script de ETL (tratamento e padronização)
+├── requirements.txt                   # Lista de dependências do projeto
+├── dados_limpos_case1.xlsx            # Base de dados final tratada (Output)
+├── Case1_Dashboard_Analise.pbix       # Arquivo fonte do Dashboard (Power BI)
+├── Case2_Diagrama_DER.png             # Imagem do Modelo Entidade-Relacionamento
+├── Case2_Consultas_SQL.txt            # Scripts das queries solicitadas
+├── Apresentacao_Executiva.pdf         # Apresentação final com resultados e insights
+└── README.md                          # Documentação do projeto
+
+## 🚀 Como Executar o Projeto
+
+**Pré-requisitos:**
+Certifique-se de ter o Python instalado.
+
+1. Clone o repositório:
+    ```bash
+     git clone [https://github.com/Tamires-Bassi/Analise-exploratoria-e-visualizacao-do-programa-PIPE-Data-Science-BI-](https://github.com/Tamires-Bassi/Analise-exploratoria-e-visualizacao-do-programa-PIPE-Data-Science-BI-)
+     cd Analise-exploratoria-e-visualizacao-do-programa-PIPE-Data-Science-BI-
+    ```
+
+2. Instale as dependências:
+    ```bash
+    pip install -r requirements.txt
+    ```
+3. Execute a Coleta de Dados: O script irá percorrer as páginas da Biblioteca Virtual da FAPESP e gerar um arquivo bruto.
+```bash
+    python "Extração de dados (Case1).py"
+    ```
+
+4. Execute a Limpeza de Dados: Este passo processa o arquivo bruto e gera o arquivo dados_limpos_case1.xlsx.
+    ```bash
+    python "Limpeza dos dados (Case 1).py"
+    ```
+
+## 📊 Destaques da Análise (Case 1)
+O processo de ETL permitiu estruturar dados não padronizados, resultando em:
+
+* **Normalização Geográfica:** Separação precisa de Cidades e Estados para criação de mapas.
+
+* **Tratamento Temporal:** Conversão de textos de vigência para datas estruturadas, permitindo análise de evolução temporal.
+
+* **Filtros Estratégicos:** Identificação de projetos específicos em polos tecnológicos como Ribeirão Preto.
+
+## 🗄️ Modelagem de Dados (Case 2)
+A solução para o segundo case envolve a estruturação de um banco de dados normalizado para gestão de projetos de pesquisa.
+
+* **Entidades Principais:** Pesquisador, Instituição, Projeto, Auxílio.
+
+* **Destaque:** Implementação de tabela associativa (Projeto_Pesquisador) para resolução de relacionamento N:N (Muitos-para-Muitos).
+
+* **Consultas SQL:** Desenvolvimento de queries complexas utilizando JOIN, GROUP BY e HAVING para relatórios gerenciais.
+
+Detalhes do diagrama (DER) e os códigos SQL completos podem ser visualizados nos arquivos Case2_Diagrama_DER.png e Case2_Consultas_SQL.txt.
+
+## 🤖 Uso de Inteligência Artificial
+Conforme diretrizes do processo seletivo, houve o uso transparente de ferramentas de IA (Gemini) para:
+
+* Depuração de erros de conexão HTTP durante o scraping.
+
+* Revisão de sintaxe e boas práticas (aliases) nas consultas SQL.
+
+* Toda a lógica de negócio, validação dos dados e construção dos scripts foi realizada pela autora.
+
+## 👩‍💻 Autora
+Tamires de Sousa Bassi

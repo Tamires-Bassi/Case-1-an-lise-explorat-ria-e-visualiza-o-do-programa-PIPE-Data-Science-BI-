@@ -1,0 +1,13 @@
+SELECT P.Nome
+FROM Pesquisador P
+JOIN Projeto_pesquisador PP ON P.ID_pesquisador = PP.FK_pesquisador
+JOIN Projeto Pr ON PP.FK_projeto = Pr.ID_projeto
+WHERE Pr.Titulo = 'Desenvolvimento de Novos Materiais';
+
+SELECT I.Nome
+FROM Instituição I
+JOIN Pesquisador P ON I.ID_Instituicao = P.FK_Instituicao
+JOIN Projeto_pesquisador PP ON P.ID_Pesquisador = PP.FK_pesquisador
+JOIN Projeto Pr ON PP.FK_Projeto = Pr.ID_Projeto
+GROUP BY I.Nome
+HAVING COUNT(DISTINCT Pr.Area_conhecimento) > 3; -- Corrigido o 'cohecimento'
