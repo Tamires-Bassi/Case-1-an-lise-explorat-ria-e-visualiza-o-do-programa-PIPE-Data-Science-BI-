@@ -10,7 +10,7 @@ O desafio foi dividido em duas etapas:
 1.  **Case 1 (Engenharia de Dados & BI):** Web Scraping da biblioteca virtual da FAPESP, limpeza de dados (ETL) e criação de dashboards analíticos.
 2.  **Case 2 (Banco de Dados):** Modelagem de dados (MER/DER) e desenvolvimento de consultas SQL para extração de insights.
 
-## 🛠️ Tecnologias Utilizadas
+## 🛠️ Tecnologias Utilizadas"
 
 * **Python 3.14.0**: Linguagem principal para automação.
 * **Bibliotecas Python**:
@@ -35,6 +35,7 @@ O desafio foi dividido em duas etapas:
 ├── Case2_Consultas_SQL.txt            # Scripts das queries solicitadas
 ├── Apresentacao_Executiva.pdf         # Apresentação final com resultados e insights
 └── README.md                          # Documentação do projeto
+```
 
 ## 🚀 Como Executar o Projeto
 
@@ -52,9 +53,9 @@ Certifique-se de ter o Python instalado.
     pip install -r requirements.txt
     ```
 3. Execute a Coleta de Dados: O script irá percorrer as páginas da Biblioteca Virtual da FAPESP e gerar um arquivo bruto.
-```bash
-    python "Extração de dados (Case1).py"
-    ```
+    ```bash
+        python "Extração de dados (Case1).py"
+        ```
 
 4. Execute a Limpeza de Dados: Este passo processa o arquivo bruto e gera o arquivo dados_limpos_case1.xlsx.
     ```bash
