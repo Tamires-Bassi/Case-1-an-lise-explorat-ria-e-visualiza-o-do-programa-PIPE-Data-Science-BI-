@@ -31,12 +31,11 @@ O desafio foi dividido em duas etapas:
 ├── requirements.txt                   # Lista de dependências do projeto
 ├── dados_limpos_case1.xlsx            # Base de dados final tratada (Output)
 ├── Case1_Dashboard_Analise.pbix       # Arquivo fonte do Dashboard (Power BI)
-├── Case2_Diagrama_DER.png             # Imagem do Modelo Entidade-Relacionamento
+├── Case2_Modelagem de Dados.jpg       # Imagem do Modelo Entidade-Relacionamento
 ├── Case2_Consultas_SQL.txt            # Scripts das queries solicitadas
 ├── Apresentacao_Executiva.pdf         # Apresentação final com resultados e insights
 └── README.md                          # Documentação do projeto
 ```
-
 ## 🚀 Como Executar o Projeto
 
 **Pré-requisitos:**
